@@ -1,0 +1,410 @@
+.modrsyar-playlist {
+    padding: .7rem;
+    border-radius:.5rem;
+    background: #006b76;
+}
+
+/* .bwrapper {
+} */
+.bwrapper>.video-js{
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+}
+.bwrapper video {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius:.5rem .5rem 0 0;
+}
+
+.bplist {
+    /* border: solid 1px red; */
+    margin: 0;
+    /*box-shadow: -2px -9px 7px -4px #000;*/
+    /*background-color: rgb(48, 159, 165) !important;*/
+    border-radius: 0 0 .5rem .5rem;
+    /* overflow:hidden; */
+    /* margin-top: -13px; */
+}
+
+.bplist-title {
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    gap:.5rem;
+    font-size:1.7rem;
+    padding: 1rem;
+    border-bottom:2px solid #fff;
+    margin-bottom: 0 !important;
+    color:#fff;
+}
+
+.bplist > ul {
+    --li-height: 3.5rem;
+    list-style: none;
+    width: 100%;
+    height: calc(var(--li-height) * 5.5);
+    margin:0 !important;
+    overflow-x: hidden;
+    /*overflow-y: hidden;*/
+    direction:ltr;
+    padding: 0;
+}
+
+/* Track */
+/* .bplist > ul::-webkit-scrollbar-track {
+  background: blue !important;
+} */
+
+/* Handle */
+/* .bplist > ul::-webkit-scrollbar-thumb {
+  background: navy;
+} */
+
+/* Handle on hover */
+/* .bplist > ul::-webkit-scrollbar-thumb:hover {
+  background: #29005F;
+} */
+
+
+.bplist ul li {
+    background: rgb(154, 222, 226);
+    height: var(--li-height);
+    color: black;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    padding: 0 1rem;
+    cursor: pointer;
+    border-bottom:solid 1px #fff;
+    direction:rtl;
+}
+.bplist ul li:last-child {
+    border-bottom: none;
+}
+.bplist ul li i{
+    z-index:2;
+}
+.bplist ul li:hover i,
+i.bplist-active {
+    color: #E83548;
+}
+
+.bplist ul li:hover {
+    background-color: rgb(48, 159, 165);
+}
+
+li.bplist-active {
+    background: rgb(48, 159, 165) !important;
+}
+.bptitle-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 23px;
+}
+.bplist ul li>span{
+    position: relative;
+    width:40px;
+    margin-left:10px;
+}
+.bplist ul li>span > i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index:3;
+}
+
+.bptitle-wrapper>span:first-child{font-size:.8rem;}
+.bptitle-wrapper>span:last-child{font-size:1.2rem;}
+.bplist-coruse-image{
+    width: 40px;
+    filter: contrast(0.5);
+    margin-left:10px;
+}
+
+#hidden-watermark {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px;
+    z-index: 1000;
+    font-size: 1em;
+    pointer-events: none;
+}
+
+.video-js {
+	height: 100%;
+	width: 100%;
+}
+.my-video-dimensions {
+    max-width: 100%;
+  aspect-ratio: 16/9;
+}
+
+@media only screen and (max-width: 600px) {
+    .bplist-coruse-image{width:40px;height:40px;}
+    .bptitle-wrapper>span:first-child{font-size:.65rem;}
+    .bptitle-wrapper>span:last-child{font-size:.8rem;}
+    .modaresyar-lessen-desc{height: 100px;}
+
+}
+
+/* ================= */
+.bPlayer-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    margin-top: 1.5rem;
+}
+
+button[data-state] {
+    --icon-size: 2.5rem;
+
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: var(--icon-size);
+    height: var(--icon-size);
+
+    filter: invert(100%) sepia(11%) saturate(50%) hue-rotate(204deg) brightness(113%) contrast(87%);
+    transition: .3s;
+    scale: 1;
+}
+
+button[data-state]:hover {
+    scale: .92;
+}
+
+button[data-state]:focus,
+button[data-state]:active { 
+    border: none;
+    outline-style: none;
+}
+
+button[data-state="previous"] {
+    background-image: url("assets/svg/modaresyar-previous.svg");
+}
+button[data-state="backward"] {
+    background-image: url("assets/svg/modaresyar-backward.svg");
+}
+button[data-state="backward"]:active {
+    transform: rotate(-30deg);
+}
+button[data-state="play"] {
+    background-image: url("assets/svg/modaresyar-play.svg");
+}
+button[data-state="pause"] {
+    background-image: url("assets/svg/modaresyar-pause.svg");
+}
+button[data-state="forward"] {
+    background-image: url("assets/svg/modaresyar-forward.svg");
+}
+button[data-state="forward"]:active {
+    transform: rotate(30deg);
+}
+button[data-state="next"] {
+    background-image: url("assets/svg/modaresyar-next.svg");
+}
+button[data-state="unseen"] {
+    background-image: url("assets/svg/modaresyar-unseen-notif.svg");
+    animation: shaking-bell .6s ease-in-out 3, pause 5s infinite;
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    transform-origin: top;
+    animation: shaking-bell 10s ease-in-out infinite;
+}
+button[data-state="seen"] {
+    background-image: url("assets/svg/modaresyar-seen-notif.svg");
+}
+
+.modaresyar-lessen-desc button{
+  width: 140px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(to right,#77530a,#ffd277,#77530a,#77530a,#ffd277,#77530a);
+  background-size: 250%;
+  background-position: left;
+  color: #000000;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  /* transition-duration: 1s; */
+  overflow: hidden;
+  width:100%;
+  font-weight: 900;
+}
+
+.modaresyar-lessen-desc button::before {
+  position: absolute;
+  content: "";
+  color: #ffd277;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 97%;
+  height: 90%;
+  border-radius: 8px;
+  /* transition-duration: 1s; */
+  background-color: rgb(0 0 0 / 29%);
+  background-size: 200%;
+}
+
+.modaresyar-lessen-desc button:hover {
+  background-position: right;
+  transition-duration: 1s;
+}
+
+.modaresyar-lessen-desc button:hover::before {
+  background-position: right;
+  transition-duration: 1s;
+}
+
+.modaresyar-wm {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 999;
+    mix-blend-mode: exclusion;
+    padding: .2rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    pointer-events: none;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    
+    background: #f9eded;
+    -webkit-background-clip: text;
+    -webkit-text-stroke: 3px transparent;
+    color: #050808;
+}
+
+
+
+
+
+.modaresyar-desc-wrapper {
+    position: relative;
+    direction: rtl;
+}
+.modaresyar-notif-wrapper {
+    position: absolute;
+    top: -1.2rem;
+    right: -1.5rem;
+    z-index: 99;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modaresyar-notif-visible {
+    background: rgba(56,37,56,0.5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(56,37,56,0.25);
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    padding: .3rem;
+    padding: .3rem;
+}
+
+/* .modaresyar-notif {
+
+} */
+
+.modaresyar-lessen-desc {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    direction: rtl;
+    /* overflow-x: hidden; */
+    transition: width .3s ease-in-out, height .3s ease-in-out;
+    color: #f9eded;
+}
+
+.modaresyar-lessen-desc * {
+    /* display: none; */
+}
+.display-mds-desc > * {
+    /* display: block; */
+}
+
+.display-mds-desc {
+    visibility: visible;
+    overflow-y: scroll;
+    margin-top: 1.5rem;
+    padding: .3rem;
+    height: 9rem;
+    width: 100%;
+    transition: width .3s ease-in-out, height 1s ease-in-out;
+    background: rgba(56,37,56,0.5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(56,37,56,0.25);
+    border-radius: 1rem;
+}
+
+
+
+
+.bplist > ul::-webkit-scrollbar,
+.modaresyar-lessen-desc::-webkit-scrollbar {
+    width: 8px;
+}
+
+.bplist > ul::-webkit-scrollbar-track,
+.modaresyar-lessen-desc::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.bplist > ul::-webkit-scrollbar-thumb,
+.modaresyar-lessen-desc::-webkit-scrollbar-thumb {
+    background: rgba(56,37,56,1);
+    outline: 1px solid rgba(56,37,56,1);
+    border-radius: 1rem;
+}
+
+
+@keyframes shaking-bell {
+    0% {
+        transform: rotate(0deg);
+    }
+    10% {
+        transform: rotate(20deg);
+    }
+    20% {
+        /* transform: rotate(0deg); */
+    }
+    30% {
+        transform: rotate(-20deg);
+    }
+    40% {
+        /* transform: rotate(0deg); */
+    }
+    50% {
+        transform: rotate(20deg);
+    }
+    60% {
+        /* transform: rotate(0deg); */
+    }
+    70% {
+        transform: rotate(-20deg);
+    }
+    80% {
+        transform: rotate(0deg);
+    }
+    /* Pause */
+    100% {
+        transform: rotate(0deg);
+    }
+}
